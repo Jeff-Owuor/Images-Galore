@@ -15,13 +15,19 @@ class Images(models.Model):
     image_location = models.ForeignKey(ImageLocation,on_delete=models.CASCADE,default=0)
     image_category = models.ForeignKey(ImageCategory,on_delete=models.CASCADE,default=0)
     
-    # def get_image_by_id(cls):
-    #     images = cls.objects.get(id)
-    #     return images
-    # @classmethod
-    # def filter_by_location(cls,locale):
-    #     image_by_location = cls.objects.filter(image_location = locale)   
-    #     return image_by_location
+    @classmethod
+    def all_images(cls):
+        image = cls.objects.all()
+        return image
+    
+    def get_image_by_id(cls):
+        images = cls.objects.get(id)
+        return images
+    
+    @classmethod
+    def filter_by_location(cls,locale):
+        image_by_location = cls.objects.filter(image_location = locale)   
+        return image_by_location
     
     def save_image(self):
         self.save()

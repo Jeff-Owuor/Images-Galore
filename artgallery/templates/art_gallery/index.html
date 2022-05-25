@@ -1,1 +1,4 @@
-<p>{{  Title }}</p>
+{% for image in images  %}
+<img  src="{{image.image.url}}" >
+<p>{{image.image_description}}</p>
+{% endfor %}
