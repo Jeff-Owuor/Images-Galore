@@ -1,4 +1,14 @@
+{%extends 'art_gallery/base.html'%}
+
+{% block content %}
+{{ block.super}}
+
 {% for image in images  %}
-<img  src="{{image.image.url}}" >
+
+<img  src="{{image.image.url}}">
 <p>{{image.image_description}}</p>
+
 {% endfor %}
+
+
+{% endblock %}
