@@ -4,10 +4,19 @@
 {{ block.super}}
 
 {% for image in images  %}
-
-<img  src="{{image.image.url}}">
-<p>{{image.image_description}}</p>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img  src="{{image.image.url}}" width="270px" height="250px">
+        </div>
+        <div class="col-md-4">
+            <p>{{image.image_description}}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% for location in locations %}
+  <p>{{location.location}}</p>
 {% endfor %}
 
 

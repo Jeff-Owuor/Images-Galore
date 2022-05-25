@@ -5,6 +5,13 @@ from django.db import models
 class ImageLocation(models.Model):
     location = models.CharField(max_length=60)
     
+    def save_location(self):
+        self.save();
+    @classmethod    
+    def locations(cls):
+       area = cls.objects.all()
+       return area 
+    
 class ImageCategory(models.Model):
     category = models.CharField(max_length=60)
     
