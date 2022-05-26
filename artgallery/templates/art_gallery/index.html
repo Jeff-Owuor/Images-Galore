@@ -3,21 +3,17 @@
 {% block content %}
 {{ block.super}}
 
-{% for image in images  %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <img  src="{{image.image.url}}" width="270px" height="250px">
-        </div>
+    <div class="row" >
+        {% for image in images %}
         <div class="col-md-4">
+            <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
             <p>{{image.image_description}}</p>
+            <p>{{ image.image_location.location }}</p>
+            <p>{{ image.image_category.category }}</p>
         </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
-{% for location in locations %}
-  <p>{{location.location}}</p>
-{% endfor %}
-
 
 {% endblock %}

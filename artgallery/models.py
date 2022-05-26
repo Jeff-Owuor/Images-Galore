@@ -30,16 +30,15 @@ class Images(models.Model):
     def get_image_by_id(cls):
         images = cls.objects.get(id)
         return images
-    
     @classmethod
-    def filter_by_location(cls,locale):
-        image_by_location = cls.objects.filter(image_location = locale)   
+    def filter_by_location(cls,location):
+        image_by_location = cls.objects.filter(image_location = location)
         return image_by_location
     
     def save_image(self):
         self.save()
         
     class Meta:
-        ordering = ['image_name']
+        ordering = ['image_location']
     
     
