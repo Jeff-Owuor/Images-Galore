@@ -15,6 +15,11 @@ class ImageLocation(models.Model):
 class ImageCategory(models.Model):
     category = models.CharField(max_length=60)
     
+    @classmethod
+    def search_by_title(cls,search_term):
+        news = cls.objects.filter(category__icontains=search_term)
+        return news
+    
 class Images(models.Model):
     image = models.ImageField(upload_to = 'gallery/')
     image_name = models.CharField(max_length=30)
