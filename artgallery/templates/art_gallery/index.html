@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
             <p>{{image.image_description}}</p>
-            <p>{{ image.image_location.location }}</p>
+            <i class="fa fa-map-marker" aria-hidden="true" style="display:inline-block">~<p style="display:inline-block" >{{ image.image_location.location }}</p></i>
             <p>{{ image.image_category.category }}</p>
         </div>
         {% endfor %}

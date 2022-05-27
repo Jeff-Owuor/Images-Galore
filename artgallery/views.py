@@ -1,11 +1,14 @@
+from unicodedata import category
 from django.shortcuts import render
 from .models import ImageCategory, Images,ImageLocation
 
 def index(request):
     images = Images.all_images()
-    
     return render(request,'art_gallery/index.html',{"images":images})
 
+def CategoryView(request,cats):
+    category_posts = Images.objects.filter(image_category=cats)
+    return render(request,'art_gallery/categories.html',{"category_posts":category_posts})
 
 def search_results(request):
     
