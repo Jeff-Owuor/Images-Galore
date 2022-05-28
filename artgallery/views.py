@@ -6,9 +6,23 @@ def index(request):
     images = Images.all_images()
     return render(request,'art_gallery/index.html',{"images":images})
 
-def CategoryView(request,cats):
-    category_posts = Images.objects.filter(image_category=cats)
+def all_categories(request):
+    images = Images.all_images()
+    return render(request,'art_gallery/all_categories.html',{"images":images})
+
+def CategoryOneView(request):
+    category_posts = Images.objects.filter(image_category=1)
     return render(request,'art_gallery/categories.html',{"category_posts":category_posts})
+
+def CategoryTwoView(request):
+    category_posts = Images.objects.filter(image_category=2)
+    return render(request,'art_gallery/categories.html',{"category_posts":category_posts})
+
+def CategoryThreeView(request):
+    category_posts = Images.objects.filter(image_category=3)
+    return render(request,'art_gallery/categories.html',{"category_posts":category_posts})
+
+
 
 def search_results(request):
     
