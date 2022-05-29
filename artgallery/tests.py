@@ -17,6 +17,12 @@ class ImageLocationTestClass(TestCase):
         locations = ImageLocation.objects.all()
         self.assertTrue(len(locations) > 0)
     
+    def test_delete_location(self):
+        location = ImageLocation.objects.filter(location = 'Kisumu')
+        location.delete()
+        self.assertTrue(len(location) == 0)
+        
+    
 class ImageCategoryTestClass(TestCase):
     '''
        Test that check the ImageCategory model
@@ -32,6 +38,11 @@ class ImageCategoryTestClass(TestCase):
         self.category.save_category()
         categories = ImageCategory.objects.all()
         self.assertTrue(len(categories) > 0)
+        
+    def test_delete_category(self):
+        category = ImageCategory.objects.filter(category = 'Mashujaa')
+        category.delete()
+        self.assertTrue(len(category) == 0)
     
     
 class ImageTestClass(TestCase):
@@ -54,4 +65,28 @@ class ImageTestClass(TestCase):
         self.location.delete_location()
         self.category.delete_category()
         self.image.delete_image()
-    
+        
+    def test_save_image(self):
+        self.image.save_image()
+        images  = Images.objects.all()
+        self.assertTrue(len(images)>0)
+        
+      
+    def test_delete_image(self):
+        image = Images.objects.filter(image_name='Chess king')
+        image.delete()
+        self.assertTrue(len(Images.objects.all()) == 0)
+        
+    def test_get_image_by_id(self):
+        searched_image = self.image.get_image_by_id(self.image.id)
+        image = Images.objects.filter(id=self.image.id)
+        self.assertTrue(searched_image, image)
+        
+    def test_search_image_by_category(self):
+        searched_images = self.image.search_image('Mashujaa')
+        self.assertTrue(len(searched_images) >= 1)
+        
+        
+    def test_search_by_location(self):
+        searched_images = self.image.filter_by_location('Kisumu')
+        self.assertTrue(len(searched_images) == 1)
