@@ -1,7 +1,6 @@
 from unicodedata import category
 from django.shortcuts import render
 from .models import ImageCategory, Images,ImageLocation
-from django.core.exceptions import ObjectDoesNotExist
 from django.http  import Http404
 
 def index(request):
@@ -9,13 +8,6 @@ def index(request):
 
 def all_categories(request):
     return render(request,'art_gallery/all_categories.html',{"locations":ImageLocation.objects.all()})
-
-def single_image(request,image_id):
-    try:
-        image = Images.objects.get(id = image_id)
-    except ObjectDoesNotExist:
-        raise Http404()
-    return render(request,"art_gallery/single_image.html", {"image":image})
 
 def CategoryOneView(request):
     category_posts = Images.objects.filter(image_category=1)
@@ -28,7 +20,7 @@ def CategoryTwoView(request):
 def CategoryThreeView(request):
     category_posts = Images.objects.filter(image_category=3)
     return render(request,'art_gallery/categories.html',{"category_posts":category_posts})
-
+ 
 
 
 def search_results(request):

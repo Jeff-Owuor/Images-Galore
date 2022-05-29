@@ -13,12 +13,20 @@
   </div>
 
   <div class="row">
-
-  {% if categories %}
-    {% for category in categories %}
+      {% if categories %}
+      {% for category in categories %}
       <div class="col-sm-6 col-md-3">
           <h1>{{category.category}}</h1>
       </div>
+      {% for image in category.images_set.all %}
+      <div class="col-md-3">
+            <a href="" style="color:black">
+            <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
+            <h3>{{ image.image_name }}</h3>
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="display:inline-block"><h2 style="display:inline-block">{{ image.image_location.location }}</h2></i>
+            </a>
+        </div>
+        {% endfor %}
     {% endfor %}
   {% endif %}
   </div>

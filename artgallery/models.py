@@ -23,6 +23,7 @@ class Images(models.Model):
     image_location = models.ForeignKey(ImageLocation,on_delete=models.CASCADE,default=0)
     image_category = models.ForeignKey(ImageCategory,on_delete=models.CASCADE,default=0)
     
+    
     @classmethod
     def all_images(cls):
         image = cls.objects.all()
