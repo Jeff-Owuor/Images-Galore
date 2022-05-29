@@ -1,14 +1,21 @@
 from unicodedata import category
 from django.shortcuts import render
 from .models import ImageCategory, Images,ImageLocation
+from django.core.exceptions import ObjectDoesNotExist
+from django.http  import Http404
 
 def index(request):
-    images = Images.all_images()
-    return render(request,'art_gallery/index.html',{"images":images})
+    return render(request,'art_gallery/index.html',{"locations":ImageLocation.objects.all()})
 
 def all_categories(request):
-    images = Images.all_images()
-    return render(request,'art_gallery/all_categories.html',{"images":images})
+    return render(request,'art_gallery/all_categories.html',{"locations":ImageLocation.objects.all()})
+
+def single_image(request,image_id):
+    try:
+        image = Images.objects.get(id = image_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request,"art_gallery/single_image.html", {"image":image})
 
 def CategoryOneView(request):
     category_posts = Images.objects.filter(image_category=1)

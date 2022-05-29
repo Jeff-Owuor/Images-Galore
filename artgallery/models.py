@@ -7,10 +7,6 @@ class ImageLocation(models.Model):
     
     def save_location(self):
         self.save();
-    @classmethod    
-    def locations(cls):
-       area = cls.objects.all()
-       return area 
     
 class ImageCategory(models.Model):
     category = models.CharField(max_length=60)
@@ -35,6 +31,11 @@ class Images(models.Model):
     def get_image_by_id(cls):
         images = cls.objects.get(id)
         return images
+    @classmethod
+    def search_image(cls,category):
+        image_by_category = cls.objects.filter(image_category__icontains = category)
+        return image_by_category
+    
     @classmethod
     def filter_by_location(cls,location):
         image_by_location = cls.objects.filter(image_location = location)

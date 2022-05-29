@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'newsToday' %}">Navbar</a>
+    <a class="navbar-brand" href="{% url 'newsToday' %}">Images Galore</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,10 +14,10 @@
             Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'category_one' %}">All</a>
-            <a class="dropdown-item" href="{% url 'category_two' %}">Safiri Kenya</a>
+            <a class="dropdown-item" href="{% url 'all_categories' %}">All</a>
+            <a class="dropdown-item" href="{% url 'category_one' %}">Safiri Kenya</a>
+            <a class="dropdown-item" href="{% url 'category_two' %}">Mashujaa</a>
             <a class="dropdown-item" href="{% url 'category_three' %}">Culture</a>
-            <a class="dropdown-item" href="{% url 'category_four' %}">Mashujaa</a>
           </div>
         </li>
       </ul>

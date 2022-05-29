@@ -3,17 +3,21 @@
 {% block content %}
 {{ block.super}}
 
-<div class="container">
-    <div class="row" >
-        {% for image in images %}
-        <div class="col-md-3">
-            <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
-            <p>{{image.image_description}}</p>
-            <i class="fa fa-map-marker" aria-hidden="true" style="display:inline-block">~<p style="display:inline-block" >{{ image.image_location.location }}</p></i>
-            <p>{{ image.image_category.category }}</p>
-        </div>
-        {% endfor %}
+<div class="container" style="display:flex">
+       <div class="row">
+        {% for location in locations %}
+         <div class="col-md-3">
+        <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="display:inline-block"><h2>{{ location.location }}</h2></i>
     </div>
-</div>
+        
+          {%  for image in location.images_set.all %}
+          <div class="col-md-3">
+        <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
+        <h3>{{ image.image_name }}</h3>
+         </div>
+        {% endfor %}
 
+  {% endfor %}
+</div>
+</div>
 {% endblock %}
