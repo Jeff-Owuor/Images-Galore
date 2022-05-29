@@ -20,12 +20,38 @@
       </div>
       {% for image in category.images_set.all %}
       <div class="col-md-3">
-            <a href="" style="color:black">
+        <a type="button" class="btn" data-toggle="modal" data-target="#pic{{image.id}}">
             <img  src="{{image.image.url}}" width="270px" height="250px" style="margin-top:9px;border-radius: 5%;">                
-            <h3>{{ image.image_name }}</h3>
-            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="display:inline-block"><h2 style="display:inline-block">{{ image.image_location.location }}</h2></i>
-            </a>
+        </a>
+        <div class="modal fade" id="pic{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ image.image_name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{image.image.url}}" alt="Image" class="img-thumbnail">
+                    <p style="font-size: 20px;">Photo Description: {{ image.image_description }}</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="font-size: 15px;">Category: {{image.image_category.category}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="font-size: 15px;">Location: {{image.image_location.location}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <input class="form-control input-lg" type="text" value="{{image.image.url}}" id="{{image.id}}.url">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
         </div>
+ </div>
         {% endfor %}
     {% endfor %}
   {% endif %}
