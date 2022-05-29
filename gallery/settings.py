@@ -46,10 +46,7 @@ INSTALLED_APPS = [
     'artgallery'
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-django_heroku.settings(locals())
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -80,6 +77,11 @@ TEMPLATES = [
         },
     },
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+django_heroku.settings(locals())
 
 WSGI_APPLICATION = 'gallery.wsgi.application'
 
