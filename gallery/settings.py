@@ -16,6 +16,10 @@ import dj_database_url
 from decouple import config,Csv
 import os
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,10 +47,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'artgallery'
+    'artgallery',
+    'cloudinary'
 ]
 
 
+#cloudinary setup
+cloudinary.config( 
+  cloud_name = "spectrejeff", 
+  api_key = "589679937397575", 
+  api_secret = "MemITtt3zoIDdRFIz4UOsVfZ3DE" 
+)
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',

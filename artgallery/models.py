@@ -1,5 +1,6 @@
 from email.mime import image
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class ImageLocation(models.Model):
     location = models.CharField(max_length=60)
@@ -36,7 +37,7 @@ class ImageCategory(models.Model):
         return news
     
 class Images(models.Model):
-    image = models.ImageField(upload_to = 'gallery/')
+    image = CloudinaryField('image')
     image_name = models.CharField(max_length=30)
     image_description = models.TextField(blank=True)
     image_location = models.ForeignKey(ImageLocation,on_delete=models.CASCADE,default=0)
